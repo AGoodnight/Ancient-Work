@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+
+<body>
+
+<img id='img1' src='http://pixdaus.com/files/items/pics/5/28/123528_c265020141607e5116ca90bd124d942a_mdsq.jpg'></img>
+
+
+<script>
+
+/*function animal(){	
+	this.name='animal';
+	this.log = function(val){
+		document.write('<br/>'+val);
+		console.log('I wrote: '+val);
+	}
+};
+
+var frog = new animal();
+
+frog.action = 'hip, a hip & hop'
+frog.hat = true
+frog.sneakers = true;
+
+if(frog instanceof animal){
+
+	for(var item in frog){
+	
+		if(frog.hasOwnProperty(item)){
+		
+			if(typeof frog[item]  === 'string'){
+				
+				if(frog[item] !== 'animal'){
+					
+					var tx = frog[item].toString();
+					
+					if( tx.search('&') != -1){
+						var txt = tx.split('&');
+						tx = txt[1]
+					}				
+
+					frog.log( 'String of '+ tx );
+					
+				}
+			};
+			if(typeof frog[item] == 'function'){
+				frog.log( 'Function of '+item+'()');
+			};
+			if(typeof frog[item] == 'number'){ 
+				frog.log( 'Number of '+frog[item].toString() );
+			};
+			if(typeof frog[item] == 'boolean'){
+				frog.log( 'Boolean of '+frog[item].toString() );
+			}
+			
+		}
+	
+	}
+}
+
+var plant = new animal();
+plant.name ='tree';
+
+try{
+	if (plant.name == 'tree') { throw 'err1' };
+}
+catch(er){
+	if(er=='err1'){
+		alert('a tree is not an animal');
+	}
+}*/
+
+var _url = document.getElementById('img1').src
+
+var start = _url.indexOf('//')+2
+var end = _url.indexOf('.');
+
+var author = _url.substring(start,end);
+
+document.write(author);
+
+</script>
+
+</body>
+
+</html>
