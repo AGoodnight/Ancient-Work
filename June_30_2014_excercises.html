@@ -7,6 +7,8 @@
 <body>
 
 <img id='img1' src='http://pixdaus.com/files/items/pics/5/28/123528_c265020141607e5116ca90bd124d942a_mdsq.jpg'></img>
+<img id='img2' src='http://pixdaus.com/files/items/pics/5/28/123528_c265020141607e5116ca90bd124d942a_mdsq.jpg'></img>
+<img id='img3' src='http://pixdaus.com/files/items/pics/5/28/123528_c265020141607e5116ca90bd124d942a_mdsq.jpg'></img>
 
 
 <script>
@@ -73,14 +75,28 @@ catch(er){
 	}
 }*/
 
-var _url = document.getElementById('img1').src
+var getSite = function(imgs){
+	
+	var ret ='';
+	
+	for(v in imgs){
+		var _url = document.getElementById(imgs[v]).src;
+		var start = _url.indexOf('//')+2;
+		var end = _url.indexOf('.');
+		var author = _url.substring(start,end);
+		
+		if(v == imgs.length-1){
+			ret = ret.concat(author);
+		}else{
+			ret = ret.concat(author+', ');
+		}
+		
+	}
+	
+	return ret;
+};
 
-var start = _url.indexOf('//')+2
-var end = _url.indexOf('.');
-
-var author = _url.substring(start,end);
-
-document.write(author);
+document.write( getSite(['img1','img2','img3']) );
 
 </script>
 
