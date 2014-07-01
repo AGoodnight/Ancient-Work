@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+span{
+	position:relative;
+	opacity:0;
+	display:block;
+}
+</style>
+
+<script src='greensock/uncompressed/tweenMax.js'></script>
+<script src='greensock/uncompressed/timelineMax.js'></script>
+<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script>
+	
+var tm = TweenMax;
+var tl = new TimelineMax();
+//var reverse = true;
+
+function remove(what,which){
+	arr = which.split(what);
+	str = arr[0];
+	return str;
+};
+
+function perLineAnim(id,speed,delay){
+
+	var items = getTag(id);
+	var pre; 
+	var cur; 
+	var nxt;
+	var del = delay;
+	var sp = speed;
+	
+	$.each(items,function(i,val){
+	
+		var item = $(items[i]);
+		
+		if(pre == undefined){
+			fade('in',item,sp);
+			pre = parseInt(remove('px',item.css('width')));
+		}else{
+			fade('in',item,sp,del);
+			pre = parseInt(remove('px',item.css('width')));
+			del += delay
+		}
+	});
+}
+
+function fade(how,what,speed,offset){
+
+	if(offset === undefined){
+		offset = 0;
+	}
+
+	switch(how){
+		case 'in':
+		 tm.to(what,speed,{delay:offset,opacity:1});
+		break;
+		
+		case 'out':
+		tm.to(what,speed,{delay:offset,opacity:0});
+		break;
+	}
+}
+
+function getID(id){
+	var item = document.getElementById(id);
+	return item;
+}
+function getTag(id){
+	var item = document.getElementsByTagName(id);
+	return item;
+}
+
+
+</script>
+</head>
+
+<body>
+
+<section id='title'>
+	<span>Welcome to:</span>
+	<span>A demonstration</span>
+	<span>of Greensock's GSAP</span>
+		<span>Welcome to:</span>
+	<span>A demonstration</span>
+	<span>of Greensock's GSAP</span>
+		<span>Welcome to:</span>
+	<span>A demonstration</span>
+	<span>of Greensock's GSAP</span>
+</section>
+
+<button onclick="perLineAnim('span',.2,.1)"></button>
+
+</body>
+
+</html>
