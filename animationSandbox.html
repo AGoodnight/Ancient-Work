@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src='greensock/uncompressed/tweenMax.js'></script>
+<script src='greensock/uncompressed/timelineMax.js'></script>
+<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+</head>
+
+<style>
+section{
+	width:900px;
+	height:500px;
+	border:black solid 1px;
+	overflow:hidden;
+}
+
+span{
+	opacity:0;
+	display:block;
+}
+
+.block{
+	position:relative;
+	width:100px;
+	height:100px;
+	background:black;
+}
+
+.rect{
+	position:relative;
+	width:100px;
+	height:70px;
+	background:black;
+}
+
+.circ{
+	position:relative;
+	width:100px;
+	height:100px;
+	background:black;
+	-webkit-border-radius:100%;
+}
+
+figure{
+	float:left;
+	width:200px;
+	border:dashed black 1px;
+	overflow:hidden;
+	padding:40px;
+}
+</style>
+
+<body>
+
+<script>
+//Animate
+
+tm = TweenMax;
+tl = new TimelineMax();
+
+var getTag = function(par,id){
+	var item = par.getElementsByTagName(id);
+	return item;
+}
+var getID = function(id){
+	return document.getElementById(id);
+}
+
+var setPara = function(params,defaults){
+	
+	for(key in params){
+		var param = key.toString();
+		
+		for(k in defaults){
+			
+			var def = k.toString()
+			if(def === param){
+			
+				defaults[def] = params[key];		
+			}	
+		}
+	}
+	
+}
+
+var spin = function(what,speed,params){
+	
+	defaults={
+		speed: 1,
+		degrees: 360,
+		ease: "easeInOut",
+	};
+	
+	setPara(params,defaults);
+	
+	tl.to(getID(what),speed,{rotation:defaults.degrees,ease:defaults.ease});
+	
+}
+var slide = function(what,speed,params){
+	
+	defaults={
+		speed: 1,
+		offset: 100,
+		ease: "easeInOut",
+	};
+	
+	setPara(params,defaults);
+	
+	tl.to(getID(what),speed,{left:defaults.offset});
+
+}
+var fadeList = function(what,speed,params){
+	
+	defaults={
+		delay:1,
+		speed:1
+	};
+	
+	setPara(params,defaults);
+	
+	var parent = getID(what);
+	items = getTag(parent,'span');
+	
+	var del = .1
+	
+	$.each(items,function(i,val){
+		var item = $(items[i]);
+		fade(item,defaults.speed,{delay:del});
+		console.log(del)
+		del += defaults.delay
+	});
+
+};
+
+function fade(what,speed,params){
+
+	defaults={
+		delay:1,
+		speed:1,
+		how:'in'
+	};
+	
+	setPara(params,defaults);
+
+	switch(defaults.how){
+		case 'in':
+		 tl.to(what,defaults.speed,{delay:defaults.delay,opacity:1});
+		break;
+		
+		case 'out':
+		tl.to(what,defaults.speed,{delay:defaults.delay,opacity:0});
+		break;
+	}
+}
+
+</script>
+
+<section>
+	<figure>
+		<div id='square' class='block'></div>
+		<button onclick="spin('square',1,{degrees:200})">Spin</button>
+	</figure>
+	<figure>
+		<div id='circle' class='circ'></div>
+		<button onclick="slide('circle',1,{offset:200})">Slide</button>
+	</figure>
+	<figure id='list'>
+		<span>List item</span>
+		<span>List item</span>
+		<span>List item</span>
+		<span>List item</span>
+		<button onclick="fadeList('list',1,{delay:.2})">Reveal</button>
+	</figure>
+</section>
+
+</body>
+</html>

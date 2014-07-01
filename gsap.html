@@ -8,6 +8,12 @@ span{
 	position:relative;
 	opacity:0;
 	display:block;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 </style>
 
@@ -48,6 +54,10 @@ function perLineAnim(id,speed,delay){
 			del += delay
 		}
 	});
+}
+
+function perLine(){
+	
 }
 
 function fade(how,what,speed,offset){

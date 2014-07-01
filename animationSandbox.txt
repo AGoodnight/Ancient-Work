@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head></head><body></script>
+
+//Animate
+
+spin(what,speed,params){
+	
+	defaults={
+		speed: 1,
+		degrees: 360,
+		ease: "easeInOut",
+		start: 0,
+		end: degrees
+	}
+	
+	for(par in params){
+		console.log(par);
+	}
+	
+}
+</script>
+</body>
+</html>
