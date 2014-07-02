@@ -4,12 +4,7 @@
 		
 		// the blank object ( {} ) prevents our defaults from being overwritten.
 		var settings = $.extend({},$.fn.simpleSlider.defaults ,options);	
-		
-		function log(obj){
-			
-		}
-			
-		return this
+		return this;
 		
 	};
 	
