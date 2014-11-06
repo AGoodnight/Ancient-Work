@@ -1,0 +1,3 @@
+TinelineNesting
+
+myTimeline.append( myObject.animateIn() ).append( myObject.animateOut(), "+=4").append( myObject2.animateIn(), "-=0.5")

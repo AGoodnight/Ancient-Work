@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body></body>
+<script>
+
+var x = 0;
+do{
+	if(x > 10){
+		//continue; ---- this breaks
+		document.write(x+'<br/>');
+	}else{
+		document.write('x<10<br/>');
+	}
+	x++
+}while(x<20);
+
+document.write('-----------------<br/>');
+
+for(var i=0, j=10;i<j;i++){
+	if(i<4){
+		document.write('i<4<br/>');
+		continue;
+	};
+	document.write(i+'<br/>');
+}
+
+name = 'badman'
+document.write('<br/>'+window.name);
+name = 'walter'
+document.write('<br/>'+window.name); // window name remains set until a new window name is assigned or the window closes
+
+var xx=200,yy=300;
+newWin = window.open('','','width=400,height=300');
+newWin.document.write('I have been moved to:<br/>'+xx+' : '+yy+' !');
+newWin.moveTo(xx,yy);
+
+</script>
+
+</html>
